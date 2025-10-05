@@ -19,7 +19,7 @@ module.exports = {
       chainId: 11155111,
     },
     fuji: {
-      url: FUJI_RPC_URL,
+      url: "https://avalanche-fuji-c-chain-rpc.publicnode.com",
       accounts: [PRIVATE_KEY],
       chainId: 43113,
     },

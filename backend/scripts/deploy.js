@@ -3,10 +3,11 @@ const fs = require("fs");
 const path = require("path");
 
 async function main() {
+  // Get the deployer's signer and network
   const [deployer] = await hre.ethers.getSigners();
-
-  console.log("Deploying contracts with the account:", deployer.address);
-  console.log("Account balance:", (await deployer.getBalance()).toString());
+  const balance = await deployer.provider.getBalance(deployer.address);
+  console.log(`Deploying with account: ${deployer.address}`);
+  console.log(`Account balance: ${hre.ethers.utils.formatEther(balance)}`);
 
   // Deploy Coin first
   const Coin = await hre.ethers.getContractFactory("Coin");
