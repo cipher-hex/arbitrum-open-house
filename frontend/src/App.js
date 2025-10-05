@@ -69,12 +69,12 @@ function App() {
 
         const networkId = await web3Provider.getNetwork();
 
-        // Check if connected to vechain Testnet (chainId 100010)
-        if (networkId.chainId !== 100010) {
+        // Check if connected to avax fuji Testnet (chainId 43113)
+        if (networkId.chainId !== 43113) {
           setNetworkError({
             currentNetwork: networkId.name,
             currentChainId: networkId.chainId,
-            requiredChainId: 100010,
+            requiredChainId: 43113,
           });
           return;
         } else {
@@ -285,7 +285,7 @@ function App() {
     try {
       await window.ethereum.request({
         method: "wallet_switchEthereumChain",
-        params: [{ chainId: "0x186aa" }], // chainId for correct network
+        params: [{ chainId: "0xa869" }], // chainId for correct network
       });
     } catch (error) {
       // This error code indicates that the chain has not been added to MetaMask
@@ -304,15 +304,15 @@ function App() {
         method: "wallet_addEthereumChain",
         params: [
           {
-            chainId: "0x186aa",
-            chainName: "VeChain Testnet",
+            chainId: "0xa869",
+            chainName: "Avax fuji Testnet",
             nativeCurrency: {
-              name: "VeChain Testnet",
-              symbol: "VET",
+              name: "Avax fuji Testnet",
+              symbol: "AVAX",
               decimals: 18,
             },
-            rpcUrls: ["https://testnet.rpc.vechain.org/"],
-            blockExplorerUrls: ["https://explore-testnet.vechain.org/"],
+            rpcUrls: ["https://avalanche-fuji-c-chain-rpc.publicnode.com"],
+            blockExplorerUrls: ["https://testnet.snowtrace.io/"],
           },
         ],
       });

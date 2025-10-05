@@ -24,7 +24,7 @@ const NetworkError = ({ networkError, onSwitchNetwork, onAddNetwork }) => {
 
         <div className="network-error-content">
           <p>
-            This application requires the <strong>VeChain Testnet</strong> to
+            This application requires the <strong>Avax fuji Testnet</strong> to
             function properly.
           </p>
           <div className="network-details">
@@ -36,7 +36,7 @@ const NetworkError = ({ networkError, onSwitchNetwork, onAddNetwork }) => {
             </div>
             <div className="network-detail-item">
               <span>Required Network:</span>
-              <span className="network-value">VeChain Testnet</span>
+              <span className="network-value">Avax fuji Testnet</span>
             </div>
           </div>
         </div>
