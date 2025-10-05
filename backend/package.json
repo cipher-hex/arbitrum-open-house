@@ -1,0 +1,34 @@
+{
+  "name": "noriskpot-backend",
+  "version": "1.0.0",
+  "description": "Zero Loss Lottery on Ethereum - Backend",
+  "main": "index.js",
+  "scripts": {
+    "deploy-fuji": "hardhat run scripts/deploy.js --network fuji",
+    "deploy-sepolia": "hardhat run scripts/deploy.js --network sepolia",
+    "deploy:local": "hardhat run scripts/deploy.js --network localhost",
+    "node": "hardhat node",
+    "test": "hardhat test"
+  },
+  "keywords": [
+    "ethereum",
+    "lottery",
+    "blockchain",
+    "solidity",
+    "hardhat"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@nomiclabs/hardhat-ethers": "^2.2.3",
+    "@nomiclabs/hardhat-waffle": "^2.0.6",
+    "@openzeppelin/contracts": "^4.9.3",
+    "chai": "^4.3.7",
+    "ethereum-waffle": "^4.0.10",
+    "ethers": "^5.7.2",
+    "hardhat": "^2.17.1"
+  },
+  "dependencies": {
+    "dotenv": "^16.3.1"
+  }
+}
