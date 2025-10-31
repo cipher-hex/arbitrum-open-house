@@ -53,6 +53,11 @@ module.exports = {
       accounts: [PRIVATE_KEY],
       chainId: 100010,
     },
+    hedera: {
+      url: "https://testnet.hashio.io/api",
+      accounts: [PRIVATE_KEY],
+      chainId: 296,
+    },
   },
   paths: {
     artifacts: "./artifacts",

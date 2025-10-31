@@ -1,7 +1,6 @@
 import React from "react";
 import "../styles/NetworkError.css";
 
-
 const NetworkError = ({ networkError, onSwitchNetwork, onAddNetwork }) => {
   return (
     <div className="network-error-container">
@@ -24,7 +23,7 @@ const NetworkError = ({ networkError, onSwitchNetwork, onAddNetwork }) => {
 
         <div className="network-error-content">
           <p>
-            This application requires the <strong>Avax fuji Testnet</strong> to
+            This application requires the <strong>Hedera Testnet</strong> to
             function properly.
           </p>
           <div className="network-details">
@@ -36,7 +35,7 @@ const NetworkError = ({ networkError, onSwitchNetwork, onAddNetwork }) => {
             </div>
             <div className="network-detail-item">
               <span>Required Network:</span>
-              <span className="network-value">Avax fuji Testnet</span>
+              <span className="network-value">Hedera Testnet</span>
             </div>
           </div>
         </div>

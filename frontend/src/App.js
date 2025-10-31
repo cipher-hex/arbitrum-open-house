@@ -69,12 +69,12 @@ function App() {
 
         const networkId = await web3Provider.getNetwork();
 
-        // Check if connected to avax fuji Testnet (chainId 43113)
-        if (networkId.chainId !== 43113) {
+        // Check if connected to Hedera Testnet (chainId 296)
+        if (networkId.chainId !== 296) {
           setNetworkError({
             currentNetwork: networkId.name,
             currentChainId: networkId.chainId,
-            requiredChainId: 43113,
+            requiredChainId: 296,
           });
           return;
         } else {
@@ -285,7 +285,7 @@ function App() {
     try {
       await window.ethereum.request({
         method: "wallet_switchEthereumChain",
-        params: [{ chainId: "0xa869" }], // chainId for correct network
+        params: [{ chainId: "0x128" }], // chainId for Hedera Testnet (296)
       });
     } catch (error) {
       // This error code indicates that the chain has not been added to MetaMask
@@ -304,15 +304,15 @@ function App() {
         method: "wallet_addEthereumChain",
         params: [
           {
-            chainId: "0xa869",
-            chainName: "Avax fuji Testnet",
+            chainId: "0x128",
+            chainName: "Hedera Testnet",
             nativeCurrency: {
-              name: "Avax fuji Testnet",
-              symbol: "AVAX",
+              name: "Hedera",
+              symbol: "HBAR",
               decimals: 18,
             },
-            rpcUrls: ["https://avalanche-fuji-c-chain-rpc.publicnode.com"],
-            blockExplorerUrls: ["https://testnet.snowtrace.io/"],
+            rpcUrls: ["https://testnet.hashio.io/api"],
+            blockExplorerUrls: ["https://hashscan.io/testnet"],
           },
         ],
       });
