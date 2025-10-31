@@ -1,8 +1,12 @@
 # No Risk Pot
 
-## 🔗 Live Website
+## 🏆 Hedera Africa Hackathon 2025
 
-- Visit the [live version](https://no-risk-somnia-pot.vercel.app/)
+This project was submitted to the **Hedera Africa Hackathon 2025**.
+
+## 🔗 Repository
+
+- Visit the [GitHub repository](https://github.com/cipher-hex/no-risk-hedera-pot)
 
 - Presentation [Click Here](https://youtu.be/Z_vZWt1RLnk)
 
@@ -117,15 +121,15 @@ frontend/
 
 ### Network
 
-- The dApp targets the Somnia Testnet. If you are on another network, the app will prompt you to switch or add the network automatically.
-- You may need some test COIN on Somnia Testnet to perform transactions.
+- The dApp targets the **Hedera Testnet**. If you are on another network, the app will prompt you to switch or add the network automatically.
+- You may need some test COIN on Hedera Testnet to perform transactions.
 
-## 📜 Deployed Contracts (Somnia Testnet)
+## 📜 Deployed Contracts (Hedera Testnet)
 
-Contracts are already deployed. You can verify them on the explorer below:
+Contracts are already deployed. You can verify them on [HashScan](https://hashscan.io/testnet):
 
-- Coin: `0x338B6cbF1f4ae67FDc39fE76764738996c95E0af`
-- ZeroLossLottery: `0x934A93F464fDF4B7f60F079F5ccFCA1776b87D7A`
+- Coin: `0xAda045EEEf7516d78A55D712D7806f0fEB5429Ed`
+- ZeroLossLottery: `0xb433f489f13333Db0d4F8B903B9aDAfb9a57600E`
 
 > Note: The frontend reads addresses from `frontend/src/artifacts/addresses.json`.
 
