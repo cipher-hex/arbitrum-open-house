@@ -23,8 +23,8 @@ const NetworkError = ({ networkError, onSwitchNetwork, onAddNetwork }) => {
 
         <div className="network-error-content">
           <p>
-            This application requires the <strong>Hedera Testnet</strong> to
-            function properly.
+            This application requires the{" "}
+            <strong>Mantle Sepolia Testnet</strong> to function properly.
           </p>
           <div className="network-details">
             <div className="network-detail-item">
@@ -35,7 +35,7 @@ const NetworkError = ({ networkError, onSwitchNetwork, onAddNetwork }) => {
             </div>
             <div className="network-detail-item">
               <span>Required Network:</span>
-              <span className="network-value">Hedera Testnet</span>
+              <span className="network-value">Mantle Sepolia Testnet</span>
             </div>
           </div>
         </div>

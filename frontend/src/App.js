@@ -69,12 +69,12 @@ function App() {
 
         const networkId = await web3Provider.getNetwork();
 
-        // Check if connected to Hedera Testnet (chainId 296)
-        if (networkId.chainId !== 296) {
+        // Check if connected to Mantle Sepolia Testnet (chainId 5003)
+        if (networkId.chainId !== 5003) {
           setNetworkError({
             currentNetwork: networkId.name,
             currentChainId: networkId.chainId,
-            requiredChainId: 296,
+            requiredChainId: 5003,
           });
           return;
         } else {
@@ -285,7 +285,7 @@ function App() {
     try {
       await window.ethereum.request({
         method: "wallet_switchEthereumChain",
-        params: [{ chainId: "0x128" }], // chainId for Hedera Testnet (296)
+        params: [{ chainId: "0x138b" }], // chainId for Mantle Sepolia Testnet (5003)
       });
     } catch (error) {
       // This error code indicates that the chain has not been added to MetaMask
@@ -304,15 +304,15 @@ function App() {
         method: "wallet_addEthereumChain",
         params: [
           {
-            chainId: "0x128",
-            chainName: "Hedera Testnet",
+            chainId: "0x138b",
+            chainName: "Mantle Sepolia Testnet",
             nativeCurrency: {
-              name: "Hedera",
-              symbol: "HBAR",
+              name: "Mantle Token",
+              symbol: "MNT",
               decimals: 18,
             },
-            rpcUrls: ["https://testnet.hashio.io/api"],
-            blockExplorerUrls: ["https://hashscan.io/testnet"],
+            rpcUrls: ["https://rpc.sepolia.mantle.xyz"],
+            blockExplorerUrls: ["https://explorer.sepolia.mantle.xyz"],
           },
         ],
       });

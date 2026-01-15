@@ -58,6 +58,12 @@ module.exports = {
       accounts: [PRIVATE_KEY],
       chainId: 296,
     },
+    // add Mantle Sepolia testnet
+    mantleSepolia: {
+      url: "https://rpc.sepolia.mantle.xyz",
+      accounts: [PRIVATE_KEY],
+      chainId: 5003,
+    },
   },
   paths: {
     artifacts: "./artifacts",
