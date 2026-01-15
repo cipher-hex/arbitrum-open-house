@@ -8,7 +8,6 @@ This project was submitted to the **Mantle Global 2025 Hackathon**.
 
 - **Live Website:** [Visit the live version](https://mantle-gamefi-project.vercel.app/)
 - **Presentation:** [Watch the demo video](https://youtu.be/Z_vZWt1RLnk?si=veBGVh_LMBG_G88x)
-- **GitHub Repository:** [View source code](https://github.com/cipher-hex/no-risk-hedera-pot)
 
 ## Project Overview
 
