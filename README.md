@@ -6,8 +6,8 @@ This project was submitted to the **Mantle Global 2025 Hackathon**.
 
 ## 🔗 Links
 
-- **Live Website:** [Visit the live version](https://mantle-gamefi-project.vercel.app/)
-- **Presentation:** [Watch the demo video](https://youtu.be/Z_vZWt1RLnk?si=veBGVh_LMBG_G88x)
+- **Live Website:** [Visit the live version](https://mantle-hack-defi-project.vercel.app/)
+- **Presentation:** [Watch the demo video](https://youtu.be/0f7it-S-yyQ?si=nSX0KkfqKWn3FEZU)
 
 ## Project Overview
 
