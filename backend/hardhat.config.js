@@ -64,6 +64,12 @@ module.exports = {
       accounts: [PRIVATE_KEY],
       chainId: 5003,
     },
+    // add Arbitrum Sepolia testnet
+    arbitrumSepolia: {
+      url: "https://sepolia-rollup.arbitrum.io/rpc",
+      accounts: [PRIVATE_KEY],
+      chainId: 421614,
+    },
   },
   paths: {
     artifacts: "./artifacts",
