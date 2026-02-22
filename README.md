@@ -1,12 +1,12 @@
 # No Risk Pot
 
-## 🏆 Mantle Global 2025 Hackathon
+## 🏆 Arbitrum APAC Mini Hackathon
 
-This project was submitted to the **Mantle Global 2025 Hackathon**.
+This project was submitted to the **Arbitrum Global 2025 Hackathon**.
 
 ## 🔗 Links
 
-- **Live Website:** [Visit the live version](https://mantle-gamefi-project.vercel.app/)
+- **Live Website:** [Visit the live version](https://no-risk-arbt-pot.vercel.app/)
 - **Presentation:** [Watch the demo video](https://youtu.be/Z_vZWt1RLnk?si=veBGVh_LMBG_G88x)
 
 ## Project Overview
@@ -120,15 +120,15 @@ frontend/
 
 ### Network
 
-- The dApp targets the **Mantle Sepolia Testnet**. If you are on another network, the app will prompt you to switch or add the network automatically.
-- You may need some test COIN on Mantle Sepolia Testnet to perform transactions.
+- The dApp targets the **Arbitrum Sepolia Testnet**. If you are on another network, the app will prompt you to switch or add the network automatically.
+- You may need some test COIN on Arbitrum Sepolia Testnet to perform transactions.
 
-## 📜 Deployed Contracts (Mantle Sepolia Testnet)
+## 📜 Deployed Contracts (Arbitrum Sepolia Testnet)
 
-Contracts are already deployed. You can verify them on [Mantle Sepolia Explorer](https://explorer.sepolia.mantle.xyz):
+Contracts are already deployed. You can verify them on [Arbitrum Sepolia Explorer](https://sepolia.arbiscan.io/):
 
-- Coin: `0x3D2a915a6e0D34b7b879B99786b72955DAc6066e`
-- ZeroLossLottery: `0x7B5b425994FBcd9F464347bb02361Ab6edb4B7a1`
+- Coin: `0xD07E0C3658F4517876EEb19e21E77051f1D3f9aD`
+- ZeroLossLottery: `0x358Dc0acD69CD4CC89cddeD2D1cc9430d13aDc96`
 
 > Note: The frontend reads addresses from `frontend/src/artifacts/addresses.json`.
 
