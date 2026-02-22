@@ -334,6 +334,7 @@ function App() {
               refreshLotteryData(lotteryContract, coinContract, account)
             }
             parseCoin={parseCoin}
+            provider={provider}
           />
         );
       case "admin":
@@ -346,6 +347,7 @@ function App() {
               refreshLotteryData(lotteryContract, coinContract, account)
             }
             parseCoin={parseCoin}
+            provider={provider}
           />
         ) : (
           <div className="error-message">
@@ -360,6 +362,7 @@ function App() {
             refreshData={() =>
               refreshLotteryData(lotteryContract, coinContract, account)
             }
+            provider={provider}
           />
         );
       default:

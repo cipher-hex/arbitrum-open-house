@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { ethers } from 'ethers';
 import '../styles/ClaimFunds.css';
+import { getGasParams } from '../utils/gasUtils';
 
-function ClaimFunds({ lotteryContract, lotteryData, refreshData }) {
+function ClaimFunds({ lotteryContract, lotteryData, refreshData, provider }) {
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState({ text: '', type: '' });
   
@@ -25,13 +26,26 @@ function ClaimFunds({ lotteryContract, lotteryData, refreshData }) {
   
   // Handle claim funds
   const handleClaimFunds = async () => {
-    if (!lotteryContract) return;
+    if (!lotteryContract || !provider) return;
     
     setLoading(true);
     setMessage({ text: 'Claiming your funds...', type: 'info' });
     
     try {
-      const tx = await lotteryContract.claimFunds();
+      const gasParams = await getGasParams(provider);
+      
+      let gasLimit;
+      try {
+        gasLimit = await lotteryContract.estimateGas.claimFunds();
+        gasLimit = gasLimit.mul(120).div(100);
+      } catch (error) {
+        gasLimit = ethers.BigNumber.from(200000);
+      }
+
+      const tx = await lotteryContract.claimFunds({
+        ...gasParams,
+        gasLimit,
+      });
       await tx.wait();
       
       setMessage({ text: 'Funds claimed successfully!', type: 'success' });

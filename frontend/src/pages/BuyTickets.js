@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { ethers } from "ethers";
 import "../styles/BuyTickets.css";
+import { getGasParams } from "../utils/gasUtils";
 
 function BuyTickets({
   lotteryContract,
@@ -8,6 +9,7 @@ function BuyTickets({
   lotteryData,
   refreshData,
   parseCoin,
+  provider,
 }) {
   const [numTickets, setNumTickets] = useState(1);
   const [loading, setLoading] = useState(false);
@@ -47,7 +49,7 @@ function BuyTickets({
   };
 
   const handleApprove = async () => {
-    if (!coinContract) return;
+    if (!coinContract || !provider) return;
 
     setLoading(true);
     setMessage({ text: "Approving COIN...", type: "info" });
@@ -55,10 +57,29 @@ function BuyTickets({
     try {
       // Use parseCoin for handling 18 decimals
       const amountToApprove = parseCoin(totalCost);
+      
+      // Get gas parameters
+      const gasParams = await getGasParams(provider);
+      
+      // Estimate gas limit
+      let gasLimit;
+      try {
+        gasLimit = await coinContract.estimateGas.approve(
+          lotteryContract.address,
+          amountToApprove
+        );
+        gasLimit = gasLimit.mul(120).div(100); // Add 20% buffer
+      } catch (error) {
+        gasLimit = ethers.BigNumber.from(50000);
+      }
 
       const tx = await coinContract.approve(
         lotteryContract.address,
-        amountToApprove
+        amountToApprove,
+        {
+          ...gasParams,
+          gasLimit,
+        }
       );
       await tx.wait();
 
@@ -76,13 +97,28 @@ function BuyTickets({
   };
 
   const handleBuyTickets = async () => {
-    if (!lotteryContract) return;
+    if (!lotteryContract || !provider) return;
 
     setLoading(true);
     setMessage({ text: "Buying tickets...", type: "info" });
 
     try {
-      const tx = await lotteryContract.buyTickets(numTickets);
+      // Get gas parameters
+      const gasParams = await getGasParams(provider);
+      
+      // Estimate gas limit
+      let gasLimit;
+      try {
+        gasLimit = await lotteryContract.estimateGas.buyTickets(numTickets);
+        gasLimit = gasLimit.mul(120).div(100); // Add 20% buffer
+      } catch (error) {
+        gasLimit = ethers.BigNumber.from(200000);
+      }
+
+      const tx = await lotteryContract.buyTickets(numTickets, {
+        ...gasParams,
+        gasLimit,
+      });
       await tx.wait();
 
       setMessage({
@@ -113,14 +149,29 @@ function BuyTickets({
 
   // Get test COIN function
   const mintTestCoin = async () => {
-    if (!coinContract) return;
+    if (!coinContract || !provider) return;
 
     setLoading(true);
     setMessage({ text: "Getting test COIN...", type: "info" });
 
     try {
+      // Get gas parameters
+      const gasParams = await getGasParams(provider);
+      
+      // Estimate gas limit
+      let gasLimit;
+      try {
+        gasLimit = await coinContract.estimateGas.getTokens();
+        gasLimit = gasLimit.mul(120).div(100); // Add 20% buffer
+      } catch (error) {
+        gasLimit = ethers.BigNumber.from(100000);
+      }
+
       // Call the getTokens function on the coin contract
-      const tx = await coinContract.getTokens();
+      const tx = await coinContract.getTokens({
+        ...gasParams,
+        gasLimit,
+      });
       await tx.wait();
 
       setMessage({

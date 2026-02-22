@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { ethers } from "ethers";
 import "../styles/AdminPanel.css";
+import { getGasParams } from "../utils/gasUtils";
 
 function AdminPanel({
   lotteryContract,
@@ -8,6 +9,7 @@ function AdminPanel({
   lotteryData,
   refreshData,
   parseCoin,
+  provider,
 }) {
   // Helper function to truncate address
   const truncateAddress = (address) => {
@@ -46,7 +48,7 @@ function AdminPanel({
   };
 
   const handleAddInterest = async () => {
-    if (!lotteryContract || !coinContract) return;
+    if (!lotteryContract || !coinContract || !provider) return;
 
     setLoading(true);
     setMessage({ text: "Adding interest...", type: "info" });
@@ -56,15 +58,43 @@ function AdminPanel({
         (lotteryData.totalTickets * interestPercentage) / 100;
       const amountToApprove = parseCoin(totalInterestAmount);
 
+      // Get gas parameters
+      const gasParams = await getGasParams(provider);
+
       // First approve COIN
+      let gasLimit;
+      try {
+        gasLimit = await coinContract.estimateGas.approve(
+          lotteryContract.address,
+          amountToApprove
+        );
+        gasLimit = gasLimit.mul(120).div(100);
+      } catch (error) {
+        gasLimit = ethers.BigNumber.from(50000);
+      }
+
       const approveTx = await coinContract.approve(
         lotteryContract.address,
-        amountToApprove
+        amountToApprove,
+        {
+          ...gasParams,
+          gasLimit,
+        }
       );
       await approveTx.wait();
 
       // Then add interest
-      const tx = await lotteryContract.addInterest(interestPercentage);
+      try {
+        gasLimit = await lotteryContract.estimateGas.addInterest(interestPercentage);
+        gasLimit = gasLimit.mul(120).div(100);
+      } catch (error) {
+        gasLimit = ethers.BigNumber.from(200000);
+      }
+
+      const tx = await lotteryContract.addInterest(interestPercentage, {
+        ...gasParams,
+        gasLimit,
+      });
       await tx.wait();
 
       setMessage({ text: "Interest added successfully!", type: "success" });
@@ -81,13 +111,26 @@ function AdminPanel({
   };
 
   const handleDrawWinners = async () => {
-    if (!lotteryContract) return;
+    if (!lotteryContract || !provider) return;
 
     setLoading(true);
     setMessage({ text: "Drawing winners...", type: "info" });
 
     try {
-      const tx = await lotteryContract.drawWinners(randomSeed);
+      const gasParams = await getGasParams(provider);
+      
+      let gasLimit;
+      try {
+        gasLimit = await lotteryContract.estimateGas.drawWinners(randomSeed);
+        gasLimit = gasLimit.mul(120).div(100);
+      } catch (error) {
+        gasLimit = ethers.BigNumber.from(300000);
+      }
+
+      const tx = await lotteryContract.drawWinners(randomSeed, {
+        ...gasParams,
+        gasLimit,
+      });
       await tx.wait();
 
       setMessage({ text: "Winners drawn successfully!", type: "success" });
@@ -104,13 +147,26 @@ function AdminPanel({
   };
 
   const handleClaimPlatformFee = async () => {
-    if (!lotteryContract) return;
+    if (!lotteryContract || !provider) return;
 
     setLoading(true);
     setMessage({ text: "Claiming platform fee...", type: "info" });
 
     try {
-      const tx = await lotteryContract.claimPlatformFee();
+      const gasParams = await getGasParams(provider);
+      
+      let gasLimit;
+      try {
+        gasLimit = await lotteryContract.estimateGas.claimPlatformFee();
+        gasLimit = gasLimit.mul(120).div(100);
+      } catch (error) {
+        gasLimit = ethers.BigNumber.from(200000);
+      }
+
+      const tx = await lotteryContract.claimPlatformFee({
+        ...gasParams,
+        gasLimit,
+      });
       await tx.wait();
 
       setMessage({
