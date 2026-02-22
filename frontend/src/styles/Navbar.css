@@ -165,6 +165,15 @@
   letter-spacing: 0.5px;
 }
 
+.wallet-address.copyable {
+  cursor: pointer;
+  transition: color var(--transition-normal);
+}
+
+.wallet-address.copyable:hover {
+  color: var(--primary-color);
+}
+
 /* Mobile menu button */
 .mobile-menu-btn {
   display: none;

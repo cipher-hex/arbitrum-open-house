@@ -4,6 +4,7 @@ import "../styles/Navbar.css";
 function Navbar({ account, connectWallet, setPage, isOwner, coinBalance }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [copied, setCopied] = useState(false);
 
   // Toggle mobile menu
   const toggleMenu = () => {
@@ -14,6 +15,18 @@ function Navbar({ account, connectWallet, setPage, isOwner, coinBalance }) {
   const handleNavClick = (page) => {
     setPage(page);
     setIsMenuOpen(false);
+  };
+
+  // Copy wallet address to clipboard
+  const copyAddress = async () => {
+    if (!account) return;
+    try {
+      await navigator.clipboard.writeText(account);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 1500);
+    } catch (err) {
+      console.error("Failed to copy address:", err);
+    }
   };
 
   // Handle scroll effect for navbar
@@ -71,10 +84,13 @@ function Navbar({ account, connectWallet, setPage, isOwner, coinBalance }) {
             <div className="wallet-balance">
               {parseFloat(coinBalance).toFixed(2)} COIN
             </div>
-            <div className="wallet-address">{`${account.slice(
-              0,
-              6
-            )}...${account.slice(-4)}`}</div>
+            <div
+              className="wallet-address copyable"
+              onClick={copyAddress}
+              title="Copy address"
+            >
+              {copied ? "Copied!" : `${account.slice(0, 6)}...${account.slice(-4)}`}
+            </div>
           </div>
         ) : (
           <button className="connect-btn" onClick={connectWallet}>

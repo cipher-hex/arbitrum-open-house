@@ -1,7 +1,7 @@
 {
   "name": "noriskpot-frontend",
   "version": "1.0.0",
-  "description": "Zero Loss Lottery on Ethereum - Frontend",
+  "description": "No Risk Pot - Zero Loss Lottery on Arbitrum. DeFi lottery where everyone gets their initial investment back.",
   "main": "index.js",
   "scripts": {
     "start": "react-scripts start",
@@ -10,10 +10,13 @@
     "eject": "react-scripts eject"
   },
   "keywords": [
-    "ethereum",
+    "arbitrum",
+    "defi",
     "lottery",
     "blockchain",
-    "react"
+    "react",
+    "zero-loss",
+    "web3"
   ],
   "author": "",
   "license": "MIT",

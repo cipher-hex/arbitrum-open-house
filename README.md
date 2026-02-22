@@ -1,12 +1,14 @@
 # No Risk Pot
 
-## 🏆 Arbitrum APAC Mini Hackathon
+## 🏆 Arbitrum Open House NYC: Online Buildathon
 
-This project was submitted to the **Arbitrum Global 2025 Hackathon**.
+This project was submitted to the **Arbitrum Open House NYC: Online Buildathon**.
+
+- **Submission:** [View on HackQuest](https://www.hackquest.io/projects/Arbitrum-Open-House-NYC-Online-Buildathon-No-Risk-Arbitrum-Pot)
 
 ## 🔗 Links
 
-- **Live Website:** [Visit the live version](https://no-risk-arbt-pot.vercel.app/)
+- **Live Website:** [Visit the live version](https://mantle-gamefi-project.vercel.app/)
 - **Presentation:** [Watch the demo video](https://youtu.be/Z_vZWt1RLnk?si=veBGVh_LMBG_G88x)
 
 ## Project Overview
@@ -90,33 +92,31 @@ frontend/
 └── README.md
 ```
 
-## 🚀 How to Run the Frontend
+## 🚀 How to Run
 
-### Prerequisites
+### Frontend
 
-- Node.js 18 LTS recommended
-- npm or pnpm
-- MetaMask (or a compatible EVM wallet)
+**Prerequisites:** Node.js 18 LTS, npm/pnpm, MetaMask (or compatible EVM wallet)
 
-### Steps
-
-1. Install dependencies
-
+1. Navigate to frontend and install dependencies:
    ```bash
-   npm install
-   # or
-   pnpm install
+   cd frontend && npm install
    ```
 
-2. Start the development server
-
+2. Start the development server:
    ```bash
    npm start
-   # or
-   pnpm start
    ```
 
 3. Open http://localhost:3000 in your browser.
+
+### Backend (Deploy Contracts)
+
+1. Create `.env` in backend with your `PRIVATE_KEY`
+2. Deploy to Arbitrum Sepolia:
+   ```bash
+   cd backend && npm run deploy:arbitrum-sepolia
+   ```
 
 ### Network
 
@@ -125,7 +125,7 @@ frontend/
 
 ## 📜 Deployed Contracts (Arbitrum Sepolia Testnet)
 
-Contracts are already deployed. You can verify them on [Arbitrum Sepolia Explorer](https://sepolia.arbiscan.io/):
+Contracts are already deployed. You can verify them on [Arbitrum Sepolia Explorer](https://sepolia.arbiscan.io):
 
 - Coin: `0xD07E0C3658F4517876EEb19e21E77051f1D3f9aD`
 - ZeroLossLottery: `0x358Dc0acD69CD4CC89cddeD2D1cc9430d13aDc96`

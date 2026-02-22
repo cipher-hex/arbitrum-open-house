@@ -1,21 +1,26 @@
 {
   "name": "noriskpot-backend",
   "version": "1.0.0",
-  "description": "Zero Loss Lottery on Ethereum - Backend",
+  "description": "No Risk Pot - Zero Loss Lottery smart contracts on Arbitrum. Solidity contracts for the DeFi lottery platform.",
   "main": "index.js",
   "scripts": {
-    "deploy-fuji": "hardhat run scripts/deploy.js --network fuji",
-    "deploy-sepolia": "hardhat run scripts/deploy.js --network sepolia",
+    "compile": "hardhat compile",
+    "deploy": "hardhat run scripts/deploy.js",
+    "deploy:arbitrum-sepolia": "hardhat run scripts/deploy.js --network arbitrumSepolia",
+    "deploy:fuji": "hardhat run scripts/deploy.js --network fuji",
+    "deploy:sepolia": "hardhat run scripts/deploy.js --network sepolia",
     "deploy:local": "hardhat run scripts/deploy.js --network localhost",
     "node": "hardhat node",
     "test": "hardhat test"
   },
   "keywords": [
-    "ethereum",
+    "arbitrum",
+    "solidity",
     "lottery",
     "blockchain",
-    "solidity",
-    "hardhat"
+    "hardhat",
+    "defi",
+    "zero-loss"
   ],
   "author": "",
   "license": "MIT",
